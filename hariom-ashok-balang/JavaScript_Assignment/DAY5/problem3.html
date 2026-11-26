@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Problem 3: Promise Chaining</title>
+</head>
+<body>
+<script>
+function step1(){
+    return new Promise(function(res){
+        setTimeout(function(){
+            res(5);
+        },1000);
+    });
+}
+function step2(x){
+    return new Promise(function(res){
+        setTimeout(function(){
+            res(x*2);
+        },1000);
+    });
+}
+function step3(x){
+    return new Promise(function(res){
+        setTimeout(function(){
+            res(x+3);
+        },1000);
+    });
+}
+step1().then(step2).then(step3).then(function(r){
+    console.log(r);
+});
+</script>
+</body>
+</html>

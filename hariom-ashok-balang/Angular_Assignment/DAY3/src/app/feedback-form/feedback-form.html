@@ -1,0 +1,14 @@
+<h2>Feedback Form</h2>
+<form [formGroup]="feedbackForm" (ngSubmit)="submit()">
+<input formControlName="name" placeholder="Name">
+<br>
+<input formControlName="email" placeholder="Email">
+<br>
+
+<div *ngIf="feedbackForm.controls.email.invalid&&feedbackForm.controls.email.touched">Enter valid email</div>
+<textarea formControlName="message" placeholder="Message"></textarea>
+<br>
+<div *ngIf="feedbackForm.controls.message.invalid&&feedbackForm.controls.message.touched">Message is required</div>
+<button type="submit">Send</button>
+</form>
+<div *ngIf="success">Feedback submitted successfully!</div>

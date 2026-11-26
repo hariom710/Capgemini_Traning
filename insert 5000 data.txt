@@ -1,0 +1,150 @@
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using WMS.API.Data;
+using WMS.API.Models;
+using WMS.Domain.Models;
+using Bogus; // Added: Required to generate the fake data
+
+namespace WMS.API.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class EmployeesController : ControllerBase
+    {
+        private readonly WMSDbContext _context;
+
+        public EmployeesController(WMSDbContext context)
+        {
+            _context = context;
+        }
+
+        // GET: api/Employees
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees()
+        {
+            return await _context.Employees
+                .Include(e => e.Department)
+                .Include(e => e.Role)
+                .ToListAsync();
+        }
+
+        // GET: api/Employees/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Employee>> GetEmployee(int id)
+        {
+            var employee = await _context.Employees
+                .Include(e => e.Department)
+                .Include(e => e.Role)
+                .FirstOrDefaultAsync(e => e.EmployeeId == id);
+
+            if (employee == null)
+            {
+                return NotFound();
+            }
+
+            return employee;
+        }
+
+        // POST: api/Employees
+        [HttpPost]
+        public async Task<ActionResult<Employee>> PostEmployee(Employee employee)
+        {
+            // 1. Save the Employee
+            _context.Employees.Add(employee);
+            await _context.SaveChangesAsync();
+
+            // 2. Auto-Generate the UserLogin for this Employee
+            var employeeRole = await _context.Roles.FirstOrDefaultAsync(r => r.RoleName == "Employee");
+
+            if (employeeRole == null)
+            {
+                employeeRole = new Role { RoleName = "Employee", Description = "Standard User" };
+                _context.Roles.Add(employeeRole);
+                await _context.SaveChangesAsync();
+            }
+
+            // SECURE: Hash the default password with BCrypt
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword("Welcome@123");
+
+            // Create the login credentials
+            var newLogin = new UserLogin
+            {
+                Username = employee.Email,
+                PasswordHash = hashedPassword, // Saved as a secure hash
+                RoleId = employeeRole.RoleId
+            };
+
+            _context.UserLogins.Add(newLogin);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetEmployee), new { id = employee.EmployeeId }, employee);
+        }
+
+        // PUT: api/Employees/5
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutEmployee(int id, Employee employee)
+        {
+            if (id != employee.EmployeeId)
+            {
+                return BadRequest(new { message = "ID mismatch." });
+            }
+
+            _context.Entry(employee).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!await _context.Employees.AnyAsync(e => e.EmployeeId == id))
+                    return NotFound();
+                else
+                    throw;
+            }
+
+            return Ok(new { message = "Employee updated successfully!" });
+        }
+
+        // ==========================================
+        // TEMPORARY SEEDER ENDPOINT FOR CAPGEMINI LOAD TESTING
+        // ==========================================
+        [HttpPost("seed-5000-employees")]
+        public async Task<IActionResult> SeedEmployees()
+        {
+            var departmentIds = await _context.Departments.Select(d => d.DepartmentId).ToListAsync();
+            var roleIds = await _context.Roles.Select(r => r.RoleId).ToListAsync();
+
+            if (!departmentIds.Any() || !roleIds.Any())
+            {
+                return BadRequest("Please create at least one Department and Role first!");
+            }
+
+            var employeeFaker = new Faker<Employee>()
+                .RuleFor(e => e.FirstName, f => f.Name.FirstName())
+                .RuleFor(e => e.LastName, f => f.Name.LastName())
+                
+                // CRITICAL FIX: Added f.IndexGlobal to ensure every single email is mathematically unique!
+                .RuleFor(e => e.Email, (f, e) => f.Internet.Email(e.FirstName + f.IndexGlobal, e.LastName))
+                
+                .RuleFor(e => e.PhoneNumber, f => f.Phone.PhoneNumber("##########"))
+                .RuleFor(e => e.Gender, f => f.PickRandom("M", "F"))
+                .RuleFor(e => e.DateOfBirth, f => f.Date.Past(30, DateTime.Now.AddYears(-18))) 
+                .RuleFor(e => e.DateOfJoining, f => f.Date.Past(2)) 
+                .RuleFor(e => e.Status, "Active")
+                .RuleFor(e => e.DepartmentId, f => f.PickRandom(departmentIds))
+                .RuleFor(e => e.RoleId, f => f.PickRandom(roleIds));
+
+            var fakeEmployees = employeeFaker.Generate(5000);
+
+            _context.ChangeTracker.AutoDetectChangesEnabled = false;
+
+            await _context.Employees.AddRangeAsync(fakeEmployees);
+            await _context.SaveChangesAsync();
+
+            _context.ChangeTracker.AutoDetectChangesEnabled = true;
+
+            return Ok(new { message = "Successfully generated and inserted 5000 unique employees!" });
+        }
+    }
+}

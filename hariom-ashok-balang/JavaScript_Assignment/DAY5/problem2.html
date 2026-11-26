@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Problem 2: Promise with Reject</title>
+</head>
+<body>
+<script>
+function check(n){
+    return new Promise(function(res,rej){
+        if(n<0){
+            rej("Negative number");
+        }else{
+            res("Valid number");
+        }
+    });
+}
+check(-5).then(function(r){
+    console.log(r);
+}).catch(function(e){
+    console.log(e);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Problem 10: Scope in Event Handlers</title>
+</head>
+<body>
+
+<button id="btn">Click Me</button>
+<h3>Open Console</h3>
+
+<script>
+let outerVar = "Outside variable";
+
+document.getElementById("btn").addEventListener("click", function () {
+    let innerVar = "Inside variable";
+    console.log("From handler:", outerVar);
+    console.log("From handler:", innerVar);
+});
+</script>
+
+</body>
+</html>

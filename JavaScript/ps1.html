@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaSript Promise with setTimeout()</title>
+</head>
+<body>
+    <script>
+        let passexam = true;
+        let res=new Promise(function(resolve,reject){
+            setTimeout(function(){
+                if(passexam){
+                    resolve("Congratulations! You passed the exam.");
+                }else{
+                    reject("Sorry! You failed the exam.");
+                }
+            },5000);
+        });
+        console.log(res);
+        res.then(msg => console.log(msg))
+   .catch(err => console.error(err));
+    </script>
+</body>
+</html>

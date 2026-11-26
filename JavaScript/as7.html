@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Async and await</h2>
+    <p id="demo"></p>
+    <script>
+        function myDisplayer(some) {
+            document.getElementById("demo").innerHTML =some;
+        }
+        function step1(){
+            return Promise.resolve("step1 ");
+        }
+        function step2(value){
+            return Promise.resolve(value +"step2 ");
+        }
+        function step3(value){
+            return Promise.resolve(value +"step3 ");
+        }
+
+        async function myDisplay(){
+            let value1 = await step1();
+            let value2 = await step2(value1);
+            let value3 = await step3(value2);
+            myDisplayer(value3);
+        }
+        myDisplay();
+    </script>
+</body>
+</html>

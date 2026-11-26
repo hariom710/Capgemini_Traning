@@ -1,0 +1,54 @@
+<p>movieadd works!</p>
+<form #movieForm="ngForm" (ngSubmit)="savedata(moviedata)">
+    <div>
+        <label for="id">ID:</label>
+        <input type="number" id="id" name="id" [(ngModel)]="moviedata.id" required #id="ngModel">
+        <div *ngIf="id.invalid && (id.touched || id.dirty)" style="color:red">
+            <div *ngIf="id.errors?.['required']">
+                ID is required.
+            </div>
+        </div>
+    </div>
+
+
+    <div>
+        <label for="name">NAME:</label>
+        <input type="text" id="name" name="name" [(ngModel)]="moviedata.name" required #name="ngModel">
+        <div *ngIf="name.invalid && (name.touched || name.dirty)" style="color:red">
+            <div *ngIf="name.errors?.['required']">
+                NAME is required.
+            </div>
+        </div>
+    </div>
+
+
+
+    <div>
+        <label for="ratings">RATINGS:</label>
+        <input type="number" id="ratings" name="ratings" [(ngModel)]="moviedata.ratings" max="10" min="0" required #ratings="ngModel">
+        <div *ngIf="ratings.invalid && (ratings.touched || ratings.dirty)" style="color:red">
+            <div *ngIf="ratings.errors?.['max'] || ratings.errors?.['min']">
+                RATINGS must be between 0 and 10.
+            </div>
+        </div>
+        <br>
+    </div>
+
+
+
+    <div>
+        <label for="year">YEAR:</label>
+        <input type="number" id="year" name="year" [(ngModel)]="moviedata.year" required #year="ngModel">
+        <div *ngIf="year.invalid && (year.touched || year.dirty)" style="color:red">
+            <div *ngIf="year.errors?.['required']">
+                YEAR is required.
+            </div>
+        </div>
+    </div>
+
+
+
+    <p>
+        <button type="submit" [disabled]="!movieForm.valid">Submit</button>
+    </p>
+</form>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Web Pages</title>
+</head>
+<body>
+    <button onclick="Create()">Create New Page</button>
+    <script>
+        function Create() {
+            var newElement=document.createElement("p");
+            newElement.innerText="This is a new paragraph.";
+
+            document.body.appendChild(newElement);
+            let newDiv=document.createElement("div");
+            newDiv.textContent="This is a new div.";
+            document.body.appendChild(newDiv);
+
+        }
+    </script>
+</body>
+</html>

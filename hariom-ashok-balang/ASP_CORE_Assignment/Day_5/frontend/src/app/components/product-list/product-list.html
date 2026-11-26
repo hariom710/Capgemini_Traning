@@ -1,0 +1,35 @@
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Product List</h2>
+
+    <table class="table table-bordered table-striped table-hover shadow">
+        <thead class="table-dark">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Category</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let product of products">
+                <td>{{product.id}}</td>
+                <td>{{product.name}}</td>
+                <td>{{product.price}}</td>
+                <td>{{product.category}}</td>
+                <td>
+                    <a class="btn btn-info btn-sm me-2" [routerLink]="['/view', product.id]">
+                        View
+                    </a>
+                    <a class="btn btn-warning btn-sm me-2" [routerLink]="['/edit', product.id]">
+                        Edit
+                    </a>
+                    <a class="btn btn-danger btn-sm" [routerLink]="['/delete', product.id]">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

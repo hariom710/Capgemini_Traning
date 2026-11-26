@@ -1,0 +1,7 @@
+<div>
+<input type="checkbox" [checked]="task.completed" (change)="toggle()">
+<span [style.text-decoration]="task.completed?'line-through':'none'">
+{{task.title}}
+</span>
+<button (click)="delete()">Delete</button>
+</div>

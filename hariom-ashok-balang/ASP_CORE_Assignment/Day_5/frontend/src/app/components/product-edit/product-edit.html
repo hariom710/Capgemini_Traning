@@ -1,0 +1,24 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Edit Product</h2>
+
+  <form [formGroup]="productForm" (ngSubmit)="updateProduct(productForm.value)" class="card p-4 shadow">
+
+    <div class="mb-3">
+      <label class="form-label">Name</label>
+      <input type="text" class="form-control" formControlName="name">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Price</label>
+      <input type="number" class="form-control" formControlName="price">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Category</label>
+      <input type="text" class="form-control" formControlName="category">
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">Update Product</button>
+
+  </form>
+</div>

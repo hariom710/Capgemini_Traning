@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Problem 2: Constructor Practice</title>
+</head>
+<body>
+<script>
+class Car{
+    constructor(brand,year){
+        this.brand=brand;
+        this.year=year;
+    }
+    showDetails(){
+        console.log(this.brand+" "+this.year);
+    }
+}
+let c=new Car("Toyota",2022);
+c.showDetails();
+</script>
+</body>
+</html>

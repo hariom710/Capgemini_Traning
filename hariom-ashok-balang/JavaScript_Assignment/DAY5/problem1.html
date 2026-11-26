@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Problem 1: Basic Promise</title>
+</head>
+<body>
+<script>
+let p=new Promise(function(res){
+    setTimeout(function(){
+        res("Task Completed");
+    },2000);
+});
+p.then(function(msg){
+    console.log(msg);
+});
+</script>
+</body>
+</html>

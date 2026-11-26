@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Inline JS Form</title>
+  <style>
+    body{font-family:Arial;background:#f4f6f8;display:flex;justify-content:center;margin-top:60px}
+    .box{background:#fff;padding:25px;border-radius:8px;box-shadow:0 0 10px rgba(0,0,0,.1);width:300px}
+    input,button{width:100%;padding:8px;margin:8px 0}
+    .error{color:red;font-size:13px}
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h3>Inline Form</h3>
+
+  <input id="name" placeholder="Name">
+  <input id="username" placeholder="Username">
+  <input id="password" type="password" placeholder="Password">
+
+  <button onclick="
+    const n=document.getElementById('name').value;
+    const u=document.getElementById('username').value;
+    const p=document.getElementById('password').value;
+    const msg=document.getElementById('msg');
+
+    if(!n||!u||!p){
+      msg.textContent='All fields required';
+    }else{
+      msg.textContent='Form submitted';
+    }
+  ">Submit</button>
+
+  <div id="msg" class="error"></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+<h2>Employee Form</h2>
+<form [formGroup]="empForm" (ngSubmit)="submit()">
+<input formControlName="name" placeholder="Employee Name">
+<br>
+<div *ngIf="empForm.controls.name.invalid&&empForm.controls.name.touched">Name required</div>
+<input formControlName="department" placeholder="Department">
+<br>
+<input formControlName="salary" placeholder="Salary">
+<br>
+<div *ngIf="empForm.controls.salary.invalid&&empForm.controls.salary.touched">Salary must be greater than 0</div>
+<button type="submit">Submit</button>
+</form>
+<div *ngIf="data">
+Employee Name:{{data.name}}<br>
+Department:{{data.department}}<br>
+Salary:{{data.salary}}
+</div>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Problem 5: Shadowing</title>
+</head>
+<body>
+<h3></h3>
+
+<script>
+let name = "Global";
+
+function showName() {
+    let name = "Local";
+    console.log("Inside:", name);
+}
+
+showName();
+console.log("Outside:", name);
+</script>
+</body>
+</html>

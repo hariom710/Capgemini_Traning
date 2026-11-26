@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Problem 10: Mini Class System</title>
+</head>
+<body>
+<script>
+class Product{
+    constructor(name,price){
+        this.name=name;
+        this.price=price;
+    }
+}
+class ElectronicsProduct extends Product{
+    info(){
+        console.log(this.name+" electronic price "+this.price);
+    }
+}
+class GroceryProduct extends Product{
+    info(){
+        console.log(this.name+" grocery price "+this.price);
+    }
+}
+let e=new ElectronicsProduct("Laptop",60000);
+let g=new GroceryProduct("Rice",80);
+e.info();
+g.info();
+</script>
+</body>
+</html>

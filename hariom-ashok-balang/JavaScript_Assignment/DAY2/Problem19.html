@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Problem 9: Closure Example</title>
+</head>
+<body>
+<h3>Open Console</h3>
+
+<script>
+function outer() {
+    let count = 0;
+    return function () {
+        count++;
+        console.log("Counter:", count);
+    };
+}
+
+let counter = outer();
+counter();
+counter();
+counter();
+</script>
+</body>
+</html>

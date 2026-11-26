@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Problem 8: Error Handling</title>
+</head>
+<body>
+<script>
+async function fail(){
+    try{
+        throw new Error("Something failed");
+    }catch(e){
+        console.log(e.message);
+    }
+}
+fail();
+</script>
+</body>
+</html>

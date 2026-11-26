@@ -1,0 +1,17 @@
+<h2>Problem 5: API Service using HttpClient </h2>
+<h2>User List</h2>
+<p *ngIf="errorMessage">{{ errorMessage }}</p>
+<table border="1">
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Email</th>
+</tr> 
+
+<tr *ngFor="let u of users">
+<td>{{u.id}}</td> 
+<td>{{u.name}}</td>
+<td>{{u.email}}</td>
+</tr>
+</table>
+<p *ngIf="!users.length && !errorMessage">Loading users...</p>

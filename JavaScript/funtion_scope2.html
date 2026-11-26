@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        const x= 32;
+        {
+            const x=90; // This will throw an error because const variables cannot be reassigned
+            console.log(x); // Output: 90
+            {
+                const x=100; // This will also throw an error because const variables cannot be reassigned
+                console.log(x); // Output: 100
+            }
+            {
+                const x=200; // This will also throw an error because const variables cannot be reassigned
+                console.log(x); // Output: 200
+            }
+        }
+        console.log(x); // Output: 32
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problem3</title>
+</head>
+<body>
+    <h1>Bank Account</h1>
+    <button id="depositBtn">Deposit 100 rs</button>
+    <button id="withdrawBtn">Withdraw 50 rs</button>
+    <p id="balance">Balance: 0 rs</p>
+    <script>
+        class BankAccount {
+            constructor() {
+                this.balance = 0;
+            }
+            deposit(amt) {
+                this.balance += amt;
+                this.updateBalance();
+            }
+            withdraw(amt) {
+                if (amt > this.balance) {
+                    alert("Insufficient funds!");
+                    return;
+                }
+                this.balance -= amt;
+                this.updateBalance();
+            }
+            updateBalance() {
+                document.getElementById("balance").textContent = `Balance: ${this.balance} rs`;
+            }
+        }
+        const account = new BankAccount();
+        document.getElementById("depositBtn").addEventListener("click", () => account.deposit(100));
+        document.getElementById("withdrawBtn").addEventListener("click", () => account.withdraw(50));
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Problem 7: Async Function Basics</title>
+</head>
+<body>
+<script>
+function getData(){
+    return new Promise(function(res){
+        setTimeout(function(){
+            res("Data loaded");
+        },1000);
+    });
+}
+async function run(){
+    let r=await getData();
+    console.log(r);
+}
+run();
+</script>
+</body>
+</html>

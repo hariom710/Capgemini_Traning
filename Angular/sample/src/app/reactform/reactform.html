@@ -1,0 +1,43 @@
+<h2>Adding data in react form</h2>
+<form (ngSubmit)="submitdata()" [formGroup]="movieForm">
+    <div>
+        <label for="id">ID:</label>
+        <input type="number" id="id" name="id" formControlName="id">
+        <div *ngIf="movieForm.controls.id.invalid && (movieForm.controls.id.touched || movieForm.controls.id.dirty)" style="color:red">
+            <div *ngIf="movieForm.controls.id.errors?.['required']">
+                ID is required.
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <label for="name">NAME:</label>
+        <input type="text" id="name" name="name" formControlName="name">
+        <div *ngIf="movieForm.controls.name.invalid && (movieForm.controls.name.touched || movieForm.controls.name.dirty)" style="color:red">
+            <div *ngIf="movieForm.controls.name.errors?.['required']">
+                NAME is required.
+            </div>
+            <div *ngIf="movieForm.controls.name.errors?.['pattern']">
+                NAME must be at least 3 characters long.
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <label for="ratings">RATINGS:</label>
+        <input type="number" id="ratings" name="ratings" formControlName="ratings">
+        <div *ngIf="movieForm.controls.ratings.invalid && (movieForm.controls.ratings.touched || movieForm.controls.ratings.dirty)" style="color:red">
+            <div *ngIf="movieForm.controls.ratings.errors?.['max'] || movieForm.controls.ratings.errors?.['min']">
+                RATINGS must be between 0 and 10.
+            </div>
+            <div *ngIf="movieForm.controls.ratings.errors?.['required']">
+                RATINGS is required.
+            </div>
+        </div>
+    </div>
+        <br>
+
+    <p>
+        <button type="submit" [disabled]="!movieForm.valid">Submit</button>
+    </p>
+</form>

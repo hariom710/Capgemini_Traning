@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Problem 8: Method Overriding</title>
+</head>
+<body>
+<script>
+class Animal{
+    speak(){
+        console.log("Animal sound");
+    }
+}
+class Dog extends Animal{
+    speak(){
+        console.log("Dog barks");
+    }
+}
+let d=new Dog();
+d.speak();
+</script>
+</body>
+</html>

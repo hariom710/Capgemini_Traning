@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Problem 8: async await</title>
+</head>
+<body>
+
+<script>
+function getData(){
+return new Promise(r=>setTimeout(()=>r("Data received"),2000));
+}
+
+async function run(){
+let d=await getData();
+console.log(d);
+}
+
+run();
+</script>
+
+</body>
+</html>

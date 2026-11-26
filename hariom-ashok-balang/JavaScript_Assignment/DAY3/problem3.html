@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Problem 3: Callback Example</title>
+</head>
+<body>
+
+<script>
+function work(cb){
+console.log("Task running");
+setTimeout(function(){
+console.log("Task finished");
+cb();
+},2000);
+}
+
+work(function(){
+console.log("Callback executed");
+});
+</script>
+
+</body>
+</html>

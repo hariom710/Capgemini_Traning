@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problem 5: Input Keyup Event </title>
+</head>
+<body>
+
+<input id="inp" placeholder="Type here">
+<p id="out"></p>
+
+<script>
+let i=document.getElementById("inp");
+i.addEventListener("keyup",function(){
+document.getElementById("out").innerText=i.value;
+});
+</script>
+    
+</body>
+</html>

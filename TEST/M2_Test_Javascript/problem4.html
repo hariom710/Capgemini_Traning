@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problem4</title>
+</head>
+<body>
+    <h1 id="temp">click the button</h1>
+    <button id="btn">Load</button>
+    <script>
+        const message = document.getElementById("temp");
+        const loadBtn = document.getElementById("btn");
+        
+        loadBtn.addEventListener("click", function () {
+            message.textContent = "loading the text";
+            setTimeout(function () {
+                message.textContent = "Success";
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

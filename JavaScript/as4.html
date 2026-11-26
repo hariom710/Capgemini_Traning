@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Asynchronous JavaScript</h1>
+    <p> Asynchronous operations that finish latter this means you can not return the result right away</p>
+    <p id="demo"></p>
+    <script>
+        function myDisplayer(some) {
+            document.getElementById("demo").innerHTML += some +" ";
+        }
+        function done(value) {
+            myDisplayer(value);
+        }
+        setTimeout(function() {done(50);}, 5000);
+    </script>
+</body>
+</html>

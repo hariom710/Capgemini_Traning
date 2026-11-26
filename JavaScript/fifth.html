@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style> 
+        .hightlight {
+            background-color: red;
+            front-weight: bold;
+        }
+        .bold {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="example" class="bold" >This text is bold</div>
+
+    <button onclick="addClass()">Add Highlight</button>
+    <button onclick="removeClass()">Remove Highlight</button>
+    <button onclick="toggleClass()">Toggle Highlight</button>
+    <script>
+        function addClass() {
+            document.getElementById("example").classList.add("hightlight");
+        }
+
+        function removeClass() {
+            document.getElementById("example").classList.remove("hightlight");
+        }
+
+        function toggleClass() {
+            document.getElementById("example").classList.toggle("hightlight");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<p>add works!</p>
+
+<h3>Adding Department</h3>
+
+<form #deptForm="ngForm" (ngSubmit)="save(deptData)">
+    <div>
+        <label for="id">Id:</label>
+        <input type="text" id="id" name="id" [(ngModel)]="deptData.id" #id="ngModel">
+    </div>
+
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" [(ngModel)]="deptData.name" #name="ngModel">
+    </div>
+
+    <div>
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" [(ngModel)]="deptData.location" #location="ngModel">
+    </div>
+    <button type="submit" [disabled]="deptForm.invalid" class="btn btn-success">Submit</button>
+</form>

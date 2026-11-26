@@ -1,0 +1,4 @@
+<h2>Task List</h2>
+<div *ngFor="let t of service.getTasks()">
+<app-task-item [task]="t"></app-task-item>
+</div>

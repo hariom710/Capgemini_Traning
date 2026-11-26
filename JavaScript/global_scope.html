@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript global scope example</title>
+</head>
+<body>
+    <p>global scope example can be accessed anywhere in the from any script or function in the same document.</p>
+    <p id="demo"></p>
+    <script>
+        var globalVar = "I am a global variable";
+        displayGlobalVar();
+        function displayGlobalVar() {
+            document.getElementById("demo").textContent = globalVar;
+        }
+        
+    </script>
+
+    
+</body>
+</html>

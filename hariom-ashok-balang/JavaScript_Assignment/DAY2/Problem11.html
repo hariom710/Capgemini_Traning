@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Problem 1: Global vs Local Scope</title>
+</head>
+<body>
+<h3>Global vs Local Scope Example</h3>
+
+<script>
+let x = 10;
+
+function testScope() {
+    let x = 20;
+    console.log("Inside function:", x);
+}
+
+testScope();
+console.log("Outside function:", x);
+</script>
+</body>
+</html>

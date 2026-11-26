@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problem 7: Form Submit Event </title>
+</head>
+<body>
+
+<form id="frm">
+<input id="name" placeholder="Name"><br><br>
+<input id="email" placeholder="Email"><br><br>
+<button type="submit">Submit</button>
+</form>
+
+<p id="res"></p>
+
+<script>
+document.getElementById("frm").addEventListener("submit",function(e){
+e.preventDefault();
+let n=document.getElementById("name").value;
+let m=document.getElementById("email").value;
+document.getElementById("res").innerText="Name: "+n+" Email: "+m;
+});
+</script>
+    
+</body>
+</html>

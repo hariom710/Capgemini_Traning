@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problem 7</title>
+</head>
+<body>
+
+<input id="item" placeholder="Enter item">
+<button onclick="addItem()">Add Item</button>
+<ol id="list"></ol>
+
+<script>
+function addItem(){
+let v=document.getElementById("item").value;
+if(!v) return;
+let li=document.createElement("li");
+li.textContent=v;
+document.getElementById("list").appendChild(li);
+document.getElementById("item").value="";
+}
+</script>
+    
+</body>
+</html>

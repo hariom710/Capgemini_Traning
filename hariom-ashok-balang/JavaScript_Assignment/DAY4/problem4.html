@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Problem 4: Class with Default Values</title>
+</head>
+<body>
+<script>
+class Student{
+    constructor(name,grade="Not Assigned"){
+        this.name=name;
+        this.grade=grade;
+    }
+    show(){
+        console.log(this.name+" - "+this.grade);
+    }
+}
+let s=new Student("Rahul");
+s.show();
+</script>
+</body>
+</html>

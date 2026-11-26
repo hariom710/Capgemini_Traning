@@ -1,0 +1,18 @@
+<h2>User Registration</h2>
+<form #regForm="ngForm" (ngSubmit)="onSubmit()">
+<input type="text" name="name" placeholder="Name" [(ngModel)]="user.name" required #name="ngModel">
+<br>
+<div *ngIf="name.invalid&&name.touched">Name is required</div>
+<input type="email" name="email" placeholder="Email" [(ngModel)]="user.email" required #email="ngModel">
+<br>
+<div *ngIf="email.invalid&&email.touched">Email is required</div>
+<input type="password" name="password" placeholder="Password" [(ngModel)]="user.password" required #password="ngModel">
+<br>
+<div *ngIf="password.invalid&&password.touched">Password is required</div>
+<button type="submit">Register</button>
+</form>
+<div *ngIf="submitted">
+Name:{{user.name}}<br>
+Email:{{user.email}}<br>
+Password:{{user.password}}
+</div>

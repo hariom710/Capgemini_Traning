@@ -1,0 +1,9 @@
+<h3>Products</h3>
+
+<p *ngIf="errorMessage">{{ errorMessage }}</p>
+
+<ul>
+	<li *ngFor="let product of products">
+		{{ product.id }} - {{ product.title }} | {{ product.category }} | ${{ product.price }}
+	</li>
+</ul>

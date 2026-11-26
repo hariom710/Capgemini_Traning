@@ -1,0 +1,23 @@
+<h2>Employee List</h2>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Mobile</th>
+            <th>Email</th>
+            <th>City</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let emp of empdata">
+            <td>{{emp.id}}</td>
+            <td>{{emp.name}}</td>
+            <td>{{emp.mobile}}</td>
+            <td>{{emp.email}}</td>
+            <td>{{emp.city}}</td>
+            <button (click)="navigateUrl('/empdetails', emp.id)">Edit</button>
+            
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Problem 5: Promise.all</title>
+</head>
+<body>
+<script>
+function api(name){
+    return new Promise(function(res){
+        setTimeout(function(){
+            res(name+" data");
+        },1000);
+    });
+}
+Promise.all([api("User"),api("Posts"),api("Comments")]).then(function(r){
+    console.log(r);
+});
+</script>
+</body>
+</html>

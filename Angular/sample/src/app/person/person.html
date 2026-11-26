@@ -1,0 +1,76 @@
+{{'today is friday'|mypipe:9}}
+<hr>
+
+Name is {{ name }} and age is {{ age }}. <br>
+
+{{age>18 ? 'Adult' : 'Minor'}}<br>
+
+Name is <input type="text" value="{{ name }}"><br>
+age is <input type="number" value="{{ age }}"><br>
+<!-- <input type="button" value="Update Name and Age" (click)="name='Jane Doe'; age=25"> -->
+<button [disabled]="age<18" (click)="name='Jane Doe'; age=25">Update Name and Age</button>
+
+<input type="checkbox" [checked]="age>18">Married<br>
+<input type="text" [(ngModel)]="name"><br>
+
+<div [class.red]="isRedEnabled">
+    <p>hello , {{ name }}</p>
+</div>
+<hr>
+<div *ngIf="age>18" [class.red]="isRedEnabled">
+    <p>{{ name }} is an adult.</p>
+</div>
+<div *ngIf="age>18; else minor">
+    <p>{{ name }} is a minor.</p>
+</div>
+
+<ng-template #minor>
+    <p> {{name}} is minor</p>
+</ng-template>
+
+<hr>
+<p>
+    {{name}} <br>
+    {{age}} <br>
+    {{city}} <br>
+    {{phone}} <br>
+    <button (click)="ToggleDetails()">{{ShowDetails ? 'Hide Details' : 'Show Details'}}</button>
+</p>
+
+<p *ngIf="ShowDetails">
+    Name: {{name}} <br>
+    Age: {{age}} <br>
+    City: {{city}} <br>
+    Phone: {{phone}} <br>
+</p>
+
+<hr>
+<!-- <ul *ngFor="let day of weekdays">
+    <ng-container *ngIf="(day === 'Sunday' || day === 'Saturday'); else elseTemplate">
+        <li style="color:red">{{ day }} is a weekend day.</li>
+    </ng-container>
+    <ng-template #elseTemplate>
+        <li style="color:blue">{{ day }} is a weekday.</li>
+    </ng-template>  
+</ul> -->
+
+
+<ul>
+    @for(day of weekdays; track day ){
+    @if(day == 'Sunday' || day=='Saturday'){
+        <li style="color: red;">{{ day }} is weekend</li>
+    }
+    @else{
+        <li style="color: blue;">{{ day }} is working day</li>
+
+    }
+}
+    
+</ul>
+{{name|uppercase }}<br>
+{{name|lowercase}}<br>
+{{name|titlecase}}<br>
+{{name|slice:0:4}}<br>
+{{age|number:'1.0-2'}}<br>
+{{age|currency:'USD':true:'1.2-2'}}<br>
+{{age|percent:'1.2-2'}}<br> 

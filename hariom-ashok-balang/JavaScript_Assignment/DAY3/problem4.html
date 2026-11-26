@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Problem 4: Nested Callbacks</title>
+</head>
+<body>
+
+<script>
+setTimeout(function(){
+console.log("Task 1");
+setTimeout(function(){
+console.log("Task 2");
+setTimeout(function(){
+console.log("Task 3");
+},1000);
+},1000);
+},1000);
+</script>
+
+</body>
+</html>

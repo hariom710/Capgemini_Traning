@@ -1,0 +1,18 @@
+<h2>Student Form</h2>
+<form [formGroup]="studentForm" (ngSubmit)="submit()">
+<label>Roll Number</label>
+<input formControlName="roll">
+<br>
+<label>Name</label>
+<input formControlName="name">
+<br>
+<label>Course</label>
+<input formControlName="course">
+<br>
+<button type="submit">Submit</button>
+</form>
+<div *ngIf="data">
+Roll Number:{{data.roll}}<br>
+Name:{{data.name}}<br>
+Course:{{data.course}}
+</div>

@@ -1,0 +1,13 @@
+<h2>Problem 2: User List</h2>
+<table border="1">
+<tr>
+<th>Name</th>
+<th>Email</th>
+<th>City</th>
+</tr>
+<tr *ngFor="let u of users">
+<td>{{u.name}}</td>
+<td>{{u.email}}</td>
+<td>{{u.address?.city}}</td>
+</tr>
+</table>

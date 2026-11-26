@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Problem 6: Getter and Setter</title>
+</head>
+<body>
+<script>
+class BankAccount{
+    constructor(){
+        this._balance=0;
+    }
+    set balance(v){
+        if(v>=0){
+            this._balance=v;
+        }
+    }
+    get balance(){
+        return this._balance;
+    }
+}
+let acc=new BankAccount();
+acc.balance=500;
+console.log(acc.balance);
+</script>
+</body>
+</html>

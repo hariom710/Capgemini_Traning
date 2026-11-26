@@ -1,0 +1,20 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4 text-danger">Delete Product</h2>
+
+  <div class="card p-4 mx-auto shadow" style="max-width: 400px;">
+    
+    <p><strong>Name:</strong> {{product.name}}</p>
+    <p><strong>Price:</strong> {{product.price}}</p>
+    <p><strong>Category:</strong> {{product.category}}</p>
+
+    <button (click)="deleteProduct(product.id)" 
+            class="btn btn-danger w-100 mt-3">
+      Confirm Delete
+    </button>
+
+    <a routerLink="/list" class="btn btn-secondary w-100 mt-2">
+      Cancel
+    </a>
+
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Problem 9: Retry Logic</title>
+</head>
+<body>
+<script>
+async function fetchData(){
+    let tries=0;
+    while(tries<3){
+        try{
+            if(Math.random()<0.7){
+                throw new Error("Fail");
+            }
+            return "Data fetched";
+        }catch(e){
+            tries++;
+            if(tries===3){
+                throw e;
+            }
+        }
+    }
+}
+fetchData().then(function(r){
+    console.log(r);
+}).catch(function(e){
+    console.log("Error after retries");
+});
+</script>
+</body>
+</html>

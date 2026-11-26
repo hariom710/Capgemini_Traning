@@ -1,0 +1,40 @@
+# Build output
+[Bb]in/
+[Oo]bj/
+node_modules/
+dist/
+build/
+coverage/
+
+# IDE files
+.vs/
+*.suo
+*.user
+*.vsidx
+
+# Logs and temporary files
+*.log
+errorlog.txt
+state.mpack
+
+# Deployment credentials
+*.PublishSettings
+*.publishsettings
+*.publishSettings
+.env
+.env.*
+!.env.example
+*.pfx
+*.pem
+*.key
+secrets.json
+
+# Training materials and private assessment data
+/Capgemini_DotNet_Track/
+/Capgemini_Foundation_Track/
+/Trainer-Studymaterial_*
+/T2- Intelligent App Dev (.Net) - Capstone Project.pdf
+/T2_YCCE_3-Day_Hands-on_Mini_Project_*.docx
+/WMS_5000_Employees.csv
+/NovelVista_Detailed_Result.pdf
+/DevOps_Assessment_Report.pdf

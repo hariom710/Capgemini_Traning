@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Problem 4: Sequential vs Parallel</title>
+</head>
+<body>
+<script>
+function task(name,time){
+    return new Promise(function(res){
+        setTimeout(function(){
+            console.log(name+" done");
+            res(name);
+        },time);
+    });
+}
+async function run(){
+    await task("Task1",1000);
+    await task("Task2",1000);
+    await Promise.all([task("TaskA",1000),task("TaskB",1000)]);
+}
+run();
+</script>
+</body>
+</html>

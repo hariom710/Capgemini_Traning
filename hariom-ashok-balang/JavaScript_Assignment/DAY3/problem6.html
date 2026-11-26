@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Problem 6: Promise Reject</title>
+</head>
+<body>
+
+<script>
+let n=-2;
+
+let p=new Promise(function(res,rej){
+if(n<0) rej("Negative number");
+else res("Valid number");
+});
+
+p.then(x=>console.log(x))
+.catch(e=>console.log(e));
+</script>
+
+</body>
+</html>

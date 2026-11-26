@@ -1,0 +1,10 @@
+<p>car works!</p>
+ID:{{ id }}
+<h2>Car List</h2>
+<ul>
+  <li *ngFor="let car of cars">
+    <strong>Model:</strong> {{ car.model }} <br>
+    <strong>Year:</strong> {{ car.year }} <br>
+    <strong>Color:</strong> {{ car.color }}
+  </li>
+</ul>

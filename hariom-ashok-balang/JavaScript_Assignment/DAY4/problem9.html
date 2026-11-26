@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Problem 9: Using super()</title>
+</head>
+<body>
+<script>
+class Person{
+    constructor(name){
+        this.name=name;
+    }
+}
+class Employee extends Person{
+    constructor(name,role){
+        super(name);
+        this.role=role;
+    }
+    show(){
+        console.log(this.name+" works as "+this.role);
+    }
+}
+let e=new Employee("Amit","Developer");
+e.show();
+</script>
+</body>
+</html>

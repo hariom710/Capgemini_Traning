@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function myFunction() {
+        //     console.log("value of x is " + x); // This will work
+        //     {
+        //         var x=10;
+        //         x=x+5;
+        //     }
+            
+        //     console.log("value of x after block is " + x); // This will also work because var is function-scoped
+        // }
+        // myFunction();
+
+
+        let mango="yellow";
+        if(mango==="yellow"){
+            let mango="orange"; // This is a different variable than the one outside the block
+            console.log("Inside block: " + mango); // Output: orange
+        }
+        console.log("outside block: " + mango);
+        </script>
+</body>
+</html>

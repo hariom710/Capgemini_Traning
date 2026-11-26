@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaSript Promise then method example</title>
+</head>
+<body>
+    <script>
+function doPromise(passexam){
+    return new Promise(function(resolve,reject){
+        setTimeout(()=>{
+            if(passexam){
+                resolve("Congratulations! You passed the exam.");
+            }else{
+                reject("Sorry! You failed the exam.");
+            }
+        },3000);
+    });
+}
+let passexam = doPromise(true);
+passexam.then(success=>console.log(success),
+err=>console.error(err));
+
+
+    </script>
+</body>
+</html>
